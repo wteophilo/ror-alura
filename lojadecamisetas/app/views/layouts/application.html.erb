@@ -9,6 +9,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= nav_bar brand: "Kustee", brand_link: root_url %>
+    <div class ="container">
+        <%= yield %>
+    </div>
   </body>
 </html>
