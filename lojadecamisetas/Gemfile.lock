@@ -95,6 +95,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (4.0.2)
+      i18n (~> 0.6)
+      rails (>= 4.0)
     railties (5.0.4)
       actionpack (= 5.0.4)
       activesupport (= 5.0.4)
@@ -143,6 +146,7 @@ DEPENDENCIES
   byebug
   jquery-rails
   rails (~> 5.0.4)
+  rails-i18n (~> 4.0.0)
   sqlite3
   turbolinks (~> 5)
   twitter-bootstrap-rails

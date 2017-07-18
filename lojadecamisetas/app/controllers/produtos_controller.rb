@@ -1,13 +1,22 @@
 class ProdutosController < ApplicationController
     def index
-        @produtos_preco = Produto.order(:preco).limit 3
+        @produtos_preco = Produto.order(:preco).limit 5
         @produtos_nome = Produto.order(:nome).limit 2 
+    end
+    
+    def new
+     @produto = Produto.new
     end
     
     def create
         valores = params.require(:produto).permit :nome,:preco,:quantidade,:descricao
-        produto = Produto.create valores
-        redirect_to root_url
+        @produto = Produto.new valores
+        if @produto.save
+            flash[:notice] =  "Produto salvo com sucesso!"
+            redirect_to root_url
+        else
+            render :new
+        end
     end
     
     def destroy

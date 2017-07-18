@@ -1,4 +1,8 @@
-
+<% if flash[:notice]%>
+    <div class = "alert alert-success">
+        <%= flash[:notice]%>
+    </div>
+<%end%>
 <h2>Ordenação por preço</h2>
 <table class ="table table-bordered">
   <thead>
