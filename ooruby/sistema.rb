@@ -6,6 +6,19 @@ require_relative "contador"
 require_relative "estoque"
 require_relative "conversor"
 
+
+ def livro_para_newsletter(livro)
+    if livro.ano_publicacao < 2000
+        puts "Titulo: #{livro.titulo} - #{livro.preco}"
+    end
+end
+
+def imprime_nota(livros)
+    livros.each do |livro|
+        puts "Titulo: #{livro.titulo} - #{livro.preco}"
+    end
+end
+
 algoritmo = Livro.new("The Pragmatic Programmer", 100, 1999, true,"",true)
 ruby = Livro.new("Programming Ruby", 100, 2004, true,"",true)
 arquitetura = Livro.new("Introdução a Arquitetura e Design de Software",70,2011,true,"",true)
