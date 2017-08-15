@@ -1,14 +1,14 @@
 require_relative "produto"
+require_relative "impresso"
 
-class EBook
+class EBook < Produto
     
-    include Produto
+    include Impresso
+    
     def initialize(titulo,preco,ano_publicacao,possui_reimpressao,editora)
-        @titulo = titulo
-        @ano_publicacao = ano_publicacao
+        super(titulo,preco,ano_publicacao,editora)
         @possui_reimpressao = possui_reimpressao
-        @editora = editora
-        @preco = calcula_preco(preco)
+    
     end 
     
     def matches?(query)

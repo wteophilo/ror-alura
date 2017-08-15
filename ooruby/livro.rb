@@ -1,16 +1,15 @@
 require_relative 'produto'
-class Livro
+require_relative "impresso"
+
+class Livro < Produto
     attr_reader :possui_sobrecapa
     
-    include Produto
+    include Impresso
     
     def initialize(titulo,preco,ano_publicacao,possui_reimpressao,editora,possui_sobrecapa)
-        @titulo = titulo
-        @ano_publicacao = ano_publicacao
+        super(titulo,preco,ano_publicacao,editora)
         @possui_reimpressao = possui_reimpressao
-        @editora = editora
         @possui_sobrecapa = possui_sobrecapa
-        @preco = calcula_preco(preco)
     end 
     
     

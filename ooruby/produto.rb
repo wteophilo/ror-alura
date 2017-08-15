@@ -1,10 +1,14 @@
-module Produto
+class Produto
     attr_reader :titulo,:ano_publicacao, :preco,:possui_reimpressao,:editora
-         
-    def possui_reimpressao?
-        @possui_reimpressao
-    end
     
+     def initialize(titulo,preco,ano_publicacao,editora)
+        @titulo = titulo
+        @ano_publicacao = ano_publicacao
+        @editora = editora
+        @preco = calcula_preco(preco)
+    end 
+         
+  
     def to_csv
         puts "Titulo: #{@titulo},#{@ano_publicacao},#{@preco}" 
     end
