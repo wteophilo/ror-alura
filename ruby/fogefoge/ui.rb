@@ -19,13 +19,15 @@ end
 
 def pede_movimento
   puts "Para onde deseja ir?"
-  movimento = gets.strip
+  movimento = gets.upcase.strip
 end
 
-def fora_do_limite
-  puts "Ops você passou do limite"
+def game_over
+  pula_linha(4)
+  puts "Game Over"
 end
 
-def bate_na_parede
-  puts "Ops você bateu na parede"
+def direcao_invalida
+  pula_linha 2
+  puts "Direção Inválida"
 end
