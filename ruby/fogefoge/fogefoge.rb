@@ -95,8 +95,27 @@ def direcao_valida?(direcao)
   direcoes.include? direcao
 end
 
+def remove(mapa,posicao,quantidade)
+  if quantidade == 0
+    return
+  end
+  executa_removacao mapa, posicao.direita,quantidade
+  executa_removacao mapa, posicao.esquerda,quantidade
+  executa_removacao mapa, posicao.cima,quantidade
+  executa_removacao mapa, posicao.baixo,quantidade
+end
+
+def executa_removacao(mapa,posicao,quantidade)
+  if mapa[posicao.linha][posicao.coluna] == "X"
+    return
+  end
+
+  posicao.remove_do mapa
+  remove mapa,posicao,quantidade-1
+end
+
 def joga(nome)
-  mapa = le_arquivo 2
+  mapa = le_arquivo 3
   caractere_do_heroi = "H"
   while true
     desenha_mapa mapa
@@ -108,13 +127,16 @@ def joga(nome)
     heroi = encontra_jogador mapa
     nova_posicao = heroi.calcula_nova_posicao direcao
     if !posicao_valida? mapa,nova_posicao.to_array
-      next
+       next
     end
     heroi.remove_do mapa
+
+    if mapa[nova_posicao.linha][nova_posicao.coluna] =="*"
+       remove mapa,nova_posicao,4
+    end
+
     nova_posicao.coloca_no mapa
-
     mapa = move_fantasmas mapa
-
     if jogador_perdeu? mapa
       game_over
       break
